@@ -399,7 +399,7 @@ the target `Revenue` says whether the session ended in a purchase.
     env = metadata["environment"]
     st.caption(
         f"Trained with Python {env['python']}, scikit-learn {env['scikit-learn']}, numpy {env['numpy']}, "
-        f"pandas {env['pandas']} on {metadata['created_utc']} UTC."
+        f"pandas {env['pandas']}."
     )
 
 
