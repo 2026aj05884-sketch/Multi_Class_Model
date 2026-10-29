@@ -192,7 +192,7 @@ def render_hero(metadata: dict, compact: bool) -> None:
         ) + "</div>"
     st.html(
         f'<div class="hero{" compact" if compact else ""}">'
-        '<div class="hero-eyebrow">ML Assignment 2 &middot; BITS Pilani WILP &middot; M.Tech AIML</div>'
+        '<div class="hero-eyebrow">ML Assignment 2 &middot; BITS Pilani WILP &middot; M.Tech AIML &middot; Student Id: 2026AJ05884</div>'
         "<h1>Online Shopper Purchase-Intent Classifier</h1>"
         '<p class="lead">Will this browsing session end in a <b>purchase</b>? Five classifiers trained on the UCI '
         "<i>Online Shoppers Purchasing Intention</i> dataset are benchmarked live on the test file you provide.</p>"
@@ -443,7 +443,7 @@ with st.sidebar:
     )
     st.divider()
     st.caption(f"[GitHub repository]({core.GITHUB_REPO_URL}) · [Dataset on UCI]({core.UCI_PAGE_URL})")
-    st.caption("BITS Pilani WILP · M.Tech AIML · Machine Learning, Assignment 2")
+    st.caption("BITS Pilani WILP · M.Tech AIML · Machine Learning, Assignment 2 · Student Id: 2026AJ05884")
 
 render_hero(metadata, compact=uploaded is not None or use_bundled)
 
