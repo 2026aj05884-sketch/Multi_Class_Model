@@ -1,0 +1,270 @@
+/* Styles for the custom HTML blocks in app.py (hero, landing page) plus light
+   polish of a few native Streamlit elements. Colours and fonts come from
+   .streamlit/config.toml; this file only adds what theming cannot express. */
+
+/* ---------------------------------------------------------------- page chrome */
+/* Top spacing is set with theme.paddingTop in config.toml, which keeps content clear of
+   Streamlit's fixed header; overriding the container padding here would slide it underneath. */
+[data-testid="stDecoration"] { background-image: linear-gradient(90deg, #22D3EE, #14B8A6, #8B5CF6); }
+
+[data-testid="stMetric"] {
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+[data-testid="stMetric"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px -16px rgba(13, 148, 136, 0.65);
+}
+
+.side-brand {
+  font: 700 0.95rem/1.2 "Space Grotesk", sans-serif;
+  letter-spacing: 0.16em;
+  color: #E2E8F0;
+}
+.side-brand span { color: #2DD4BF; }
+.side-brand small {
+  display: block;
+  margin-top: 3px;
+  font: 500 0.66rem/1.3 "JetBrains Mono", monospace;
+  letter-spacing: 0.08em;
+  color: #7C8DA6;
+}
+
+/* ----------------------------------------------------------------------- hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 30px 34px 26px;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background:
+    radial-gradient(900px 380px at 88% -30%, rgba(34, 211, 238, 0.30), transparent 60%),
+    radial-gradient(700px 300px at -10% 130%, rgba(139, 92, 246, 0.24), transparent 60%),
+    linear-gradient(135deg, #0B1220 0%, #0F1E33 55%, #0A2A31 100%);
+  box-shadow: 0 22px 44px -22px rgba(8, 47, 73, 0.6);
+  color: #E2E8F0;
+}
+.hero::before { /* faint blueprint grid */
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.09) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: linear-gradient(180deg, #000 10%, transparent 90%);
+  mask-image: linear-gradient(180deg, #000 10%, transparent 90%);
+}
+.hero::after { /* scanning light along the top edge */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -35%;
+  width: 35%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #22D3EE, transparent);
+  animation: hero-scan 6s linear infinite;
+}
+.hero > * { position: relative; }
+
+.hero-eyebrow {
+  font: 600 0.72rem/1 "JetBrains Mono", monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #67E8F9;
+}
+.hero h1 {
+  margin: 0.6rem 0 0.45rem;
+  padding: 0;
+  font: 700 2.35rem/1.1 "Space Grotesk", sans-serif;
+  background: linear-gradient(90deg, #F8FAFC 0%, #A5F3FC 45%, #5EEAD4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero .lead {
+  max-width: 780px;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #B6C4D6;
+}
+.hero .lead b { color: #E2E8F0; }
+
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font: 500 0.74rem/1.4 "JetBrains Mono", monospace;
+  color: #CFFAFE;
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(34, 211, 238, 0.26);
+}
+.pill .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34D399;
+  animation: dot-pulse 2s infinite;
+}
+
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.kpi {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  backdrop-filter: blur(4px);
+}
+.kpi .v { font: 700 1.45rem/1.15 "Space Grotesk", sans-serif; color: #F8FAFC; }
+.kpi .l {
+  margin-top: 4px;
+  font: 500 0.68rem/1.3 "JetBrains Mono", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8FA3BF;
+}
+.kpi .s { margin-top: 2px; font-size: 0.74rem; color: #5EEAD4; }
+
+.hero.compact { padding: 18px 26px 6px; }
+.hero.compact h1 { font-size: 1.75rem; }
+.hero.compact .lead { margin-bottom: 0.7rem; }
+
+/* --------------------------------------------------------------- landing page */
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, rgba(20, 184, 166, 0.13), rgba(34, 211, 238, 0.05));
+  border: 1px solid rgba(20, 184, 166, 0.38);
+  color: #0F172A;
+  font-size: 0.95rem;
+}
+.cta .arrow {
+  font: 700 1.2rem "JetBrains Mono", monospace;
+  color: #0D9488;
+  animation: arrow-nudge 1.6s ease-in-out infinite;
+}
+.cta code, .step code {
+  padding: 1px 5px;
+  border-radius: 5px;
+  font: 600 0.82em "JetBrains Mono", monospace;
+  background: rgba(13, 148, 136, 0.1);
+  color: #0F766E;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 26px 0 12px;
+  font: 600 0.76rem/1 "JetBrains Mono", monospace;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #0F766E;
+}
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, #99F6E4, transparent);
+}
+
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.step {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #FFFFFF;
+  border: 1px solid #DCE6F0;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.step:hover {
+  transform: translateY(-2px);
+  border-color: #99F6E4;
+  box-shadow: 0 12px 26px -16px rgba(13, 148, 136, 0.6);
+}
+.step .n { font: 700 0.8rem "JetBrains Mono", monospace; color: #0D9488; }
+.step .t { margin-top: 4px; font: 600 1rem "Space Grotesk", sans-serif; color: #0F172A; }
+.step .d { margin-top: 4px; font-size: 0.83rem; line-height: 1.45; color: #475569; }
+
+.board {
+  padding: 10px 16px 12px;
+  border-radius: 14px;
+  background: linear-gradient(160deg, #0B1220, #0F1E33);
+  border: 1px solid #1E2A44;
+}
+.lb-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 190px) 1fr 170px;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+.lb-name { font: 600 0.86rem "Space Grotesk", sans-serif; color: #E2E8F0; }
+.lb-track { height: 9px; border-radius: 999px; background: rgba(148, 163, 184, 0.16); overflow: hidden; }
+.lb-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #14B8A6, #22D3EE);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.45);
+}
+.lb-val { font: 500 0.76rem "JetBrains Mono", monospace; color: #A5F3FC; text-align: right; }
+.badge {
+  margin-left: 7px;
+  padding: 1px 6px;
+  border-radius: 6px;
+  font: 700 0.6rem "JetBrains Mono", monospace;
+  letter-spacing: 0.06em;
+  color: #0B1220;
+  background: #5EEAD4;
+}
+.board-note { margin-top: 8px; font: 0.72rem/1.4 "JetBrains Mono", monospace; color: #7C8DA6; }
+
+.chip-group { margin-bottom: 12px; }
+.chip-group .g {
+  margin-bottom: 6px;
+  font: 600 0.68rem "JetBrains Mono", monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #64748B;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  padding: 3px 9px;
+  border-radius: 8px;
+  font: 500 0.74rem "JetBrains Mono", monospace;
+  color: #0F3B4C;
+  background: #EEF6FA;
+  border: 1px solid #D3E3EE;
+  cursor: help;
+}
+.chip.cat { color: #3B2A72; background: #F3F0FF; border-color: #E0D7FE; }
+.chip.target { color: #065F46; background: #ECFDF5; border-color: #A7F3D0; font-weight: 700; }
+
+/* ---------------------------------------------------------------- animations */
+@keyframes hero-scan { to { left: 100%; } }
+@keyframes dot-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+@keyframes arrow-nudge { 50% { transform: translateX(-5px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::after, .pill .dot, .cta .arrow { animation: none; }
+}
+@media (max-width: 640px) {
+  .hero { padding: 22px 20px 18px; }
+  .hero h1 { font-size: 1.8rem; }
+  .lb-row { grid-template-columns: 1fr; gap: 6px; }
+  .lb-val { text-align: left; }
+}

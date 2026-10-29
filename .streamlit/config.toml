@@ -1,0 +1,31 @@
+[theme]
+base = "light"
+primaryColor = "#0D9488"
+backgroundColor = "#F6F9FC"
+secondaryBackgroundColor = "#E8F0F6"
+textColor = "#0F172A"
+borderColor = "#D8E2EE"
+baseRadius = "0.6rem"
+# Gap below the fixed header; Streamlit adds the header height itself, so content never hides under it.
+paddingTop = "1rem"
+# "<family>:<Google Fonts CSS URL>" - Streamlit treats everything after the first colon as the URL,
+# so no fallback list may follow it.
+font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+headingFont = "'Space Grotesk':https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap"
+codeFont = "'JetBrains Mono':https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+
+[theme.sidebar]
+backgroundColor = "#0B1220"
+secondaryBackgroundColor = "#16213A"
+textColor = "#DCE7F3"
+primaryColor = "#2DD4BF"
+borderColor = "#243352"
+linkColor = "#67E8F9"
+codeBackgroundColor = "#16213A"
+
+[server]
+# The app only needs the held-out test split, so keep uploads small for the free tier.
+maxUploadSize = 25
+
+[browser]
+gatherUsageStats = false
