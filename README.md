@@ -174,7 +174,7 @@ The app (`app.py`) loads the five saved pipelines from `model/` and **never retr
 ## Repository Structure
 
 ```
-ML2/
+Multi_Class_Model/
 ├── app.py                        # Streamlit front-end (loads the saved models, no retraining)
 ├── train_models.py               # data split, tuning, evaluation and saving of the five models
 ├── shopper_core.py               # shared schema, input cleaning and metric helpers
@@ -201,7 +201,7 @@ ML2/
 
 ```bash
 git clone https://github.com/2026aj05884-sketch/Multi_Class_Model.git
-cd ML2
+cd Multi_Class_Model
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
@@ -217,7 +217,7 @@ scikit-learn model is only guaranteed to load with the same release. They instal
 **Deployment (Streamlit Community Cloud):** the app is live at <https://2026aj05884.streamlit.app/>
 and redeploys automatically on every push to `main`. It was deployed by signing in at
 <https://streamlit.io/cloud> with GitHub, choosing **New app**, selecting the repository
-`2026aj05884-sketch/ML2`, branch `main` and main file `app.py` (any Python version from 3.11 to 3.14
+`2026aj05884-sketch/Multi_Class_Model`, branch `main` and main file `app.py` (any Python version from 3.11 to 3.14
 works), and clicking **Deploy**.
 
 ## References
